@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link} from 'react-router-dom'
 
-function Administrador() {
+function Administrador(props) {
+    
  return (
         <>
-            <div id="caja_menu" style={{ textAlign: "left" }}>
+            <div id="admin" style={{ textAlign: "left" }}>
                 <strong className="h3">
-                    Welcome :
+                    Welcome : {props.username}
                 </strong>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ marginTop: 20 }}>
                     <div className="container-fluid">

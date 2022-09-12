@@ -2,9 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { useHistory, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import Administrador from './Administrador';
 
 function Login() {
 
+  const [miLogin] = useState('false')
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,7 +33,7 @@ function Login() {
       .then(res => {
         console.log(res.data);
         const tokenRecibido = res.data.token;
-        sessionStorage.setItem('token', tokenRecibido);
+        localStorage.setItem('token', tokenRecibido);
         history.push('/administrador')
       })
   }
@@ -54,13 +56,13 @@ function Login() {
             <form onSubmit={handleSubmit}>
               <div className="form-outline mb-4">
                 <label className="form-label" >Email address</label>
-                <input type="email" onChange={e => setUsername(e.target.value)} value={username} className="form-control form-control-lg"
+                <input type="email" id="txtusu" onChange={e => setUsername(e.target.value)} value={username} className="form-control form-control-lg"
                   placeholder="Enter a valid email address" />
 
               </div>
               <div className="form-outline mb-3">
                 <label className="form-label">Password</label>
-                <input type="password" onChange={e => setPassword(e.target.value)} value={password} className="form-control form-control-lg"
+                <input type="password" id="txtpas" onChange={e => setPassword(e.target.value)} value={password} className="form-control form-control-lg"
                   placeholder="Enter password" />
 
               </div>
@@ -68,6 +70,7 @@ function Login() {
                 <button type="submit" className="btn btn-primary btn-lg">Login</button>
               </div>
             </form>
+{miLogin === "true" && <Administrador username={username}/>}
           </div>
         </div>
       </div>

@@ -9,8 +9,6 @@ function Listado() {
             </div>
             <div className="table-responsive">
 
-
-
                 <>
                     <table className="table table-bordered table-hover" style={{ marginTop: 12 }}>
                         <thead className="text-center" style={{ background: "lightgray" }}>
