@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+//Libraries
+import { Switch, Route } from 'react-router-dom';
+
+//Imports
+
+import Login from './componentes/Login.jsx';
+import Header from './componentes/Header.jsx';
+import Administrador from './componentes/Administrador.jsx';
+
+//Estilos
 import './App.css';
+import "./estilos/bootstrap.min.css"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <Header/>
+    <div className='container mt-3'>
+    <Switch>
+    <Route exact path="/" component={Login} />
+    <Route path="/administrador" component={Administrador} />
+    </Switch>
     </div>
+    </>
+    
   );
 }
 
